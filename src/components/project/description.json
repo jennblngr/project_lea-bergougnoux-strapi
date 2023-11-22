@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_descriptions",
+  "info": {
+    "displayName": "description",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext"
+    },
+    "media": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

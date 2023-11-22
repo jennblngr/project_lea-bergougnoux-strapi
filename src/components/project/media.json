@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_media",
+  "info": {
+    "displayName": "media",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "source": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "alt": {
+      "type": "string"
+    }
+  }
+}

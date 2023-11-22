@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "year": {
+      "type": "string",
+      "regex": "\\d{4}",
+      "default": "2020",
+      "required": true
+    },
+    "description": {
+      "displayName": "description",
+      "type": "component",
+      "repeatable": false,
+      "component": "project.description",
+      "required": false
+    },
+    "media": {
+      "displayName": "media",
+      "type": "component",
+      "repeatable": true,
+      "component": "project.media",
+      "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "projects"
+    }
+  }
+}
