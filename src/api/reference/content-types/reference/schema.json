@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "references",
+  "info": {
+    "singularName": "reference",
+    "pluralName": "references",
+    "displayName": "References",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "displayName": "Url",
+      "type": "component",
+      "repeatable": true,
+      "component": "infos.url",
+      "required": true
+    }
+  }
+}

@@ -692,7 +692,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required;
     projects: Attribute.Relation<
       'api::category.category',
-      'oneToMany',
+      'manyToMany',
       'api::project.project'
     >;
     createdAt: Attribute.DateTime;
@@ -708,6 +708,27 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCvCv extends Schema.SingleType {
+  collectionName: 'cvs';
+  info: {
+    singularName: 'cv';
+    pluralName: 'cvs';
+    displayName: 'CV';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    src: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::cv.cv', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::cv.cv', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -743,6 +764,27 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
   };
 }
 
+export interface ApiInfoInfo extends Schema.SingleType {
+  collectionName: 'infos';
+  info: {
+    singularName: 'info';
+    pluralName: 'infos';
+    displayName: 'Infos';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    text: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -759,9 +801,9 @@ export interface ApiProjectProject extends Schema.CollectionType {
     year: Attribute.String & Attribute.Required & Attribute.DefaultTo<'2020'>;
     description: Attribute.Component<'project.description'>;
     media: Attribute.Component<'project.media', true> & Attribute.Required;
-    category: Attribute.Relation<
+    categories: Attribute.Relation<
       'api::project.project',
-      'manyToOne',
+      'manyToMany',
       'api::category.category'
     >;
     createdAt: Attribute.DateTime;
@@ -775,6 +817,36 @@ export interface ApiProjectProject extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReferenceReference extends Schema.SingleType {
+  collectionName: 'references';
+  info: {
+    singularName: 'reference';
+    pluralName: 'references';
+    displayName: 'References';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    url: Attribute.Component<'infos.url', true> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::reference.reference',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::reference.reference',
       'oneToOne',
       'admin::user'
     > &
@@ -799,8 +871,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::category.category': ApiCategoryCategory;
+      'api::cv.cv': ApiCvCv;
       'api::homepage.homepage': ApiHomepageHomepage;
+      'api::info.info': ApiInfoInfo;
       'api::project.project': ApiProjectProject;
+      'api::reference.reference': ApiReferenceReference;
     }
   }
 }

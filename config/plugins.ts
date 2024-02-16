@@ -2,6 +2,7 @@ export default {
   graphql: {
     enabled: true,
     config: {
+      defaultLimit: 100,
       endpoint: '/graphql',
       shadowCRUD: true,
       playgroundAlways: true,

@@ -1,5 +1,18 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface InfosUrl extends Schema.Component {
+  collectionName: 'components_infos_urls';
+  info: {
+    displayName: 'Url';
+    icon: 'link';
+    description: '';
+  };
+  attributes: {
+    src: Attribute.String;
+    name: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface ProjectDescription extends Schema.Component {
   collectionName: 'components_project_descriptions';
   info: {
@@ -9,7 +22,7 @@ export interface ProjectDescription extends Schema.Component {
   };
   attributes: {
     text: Attribute.RichText;
-    media: Attribute.Media;
+    medias: Attribute.Media;
   };
 }
 
@@ -28,6 +41,7 @@ export interface ProjectMedia extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'infos.url': InfosUrl;
       'project.description': ProjectDescription;
       'project.media': ProjectMedia;
     }
