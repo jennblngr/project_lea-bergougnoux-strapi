@@ -745,8 +745,8 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     draftAndPublish: false;
   };
   attributes: {
-    text: Attribute.RichText & Attribute.Required;
     carousel: Attribute.Media & Attribute.Required;
+    content: Attribute.Blocks & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -770,12 +770,13 @@ export interface ApiInfoInfo extends Schema.SingleType {
     singularName: 'info';
     pluralName: 'infos';
     displayName: 'Infos';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    text: Attribute.RichText & Attribute.Required;
+    content: Attribute.Blocks & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
@@ -806,6 +807,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >;
+    cover: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -21,8 +21,8 @@ export interface ProjectDescription extends Schema.Component {
     description: '';
   };
   attributes: {
-    text: Attribute.RichText;
     medias: Attribute.Media;
+    content: Attribute.Blocks;
   };
 }
 

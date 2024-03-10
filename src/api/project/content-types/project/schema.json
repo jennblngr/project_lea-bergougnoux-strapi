@@ -41,6 +41,14 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "projects"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

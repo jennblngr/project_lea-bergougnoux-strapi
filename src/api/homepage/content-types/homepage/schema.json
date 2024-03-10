@@ -12,10 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "text": {
-      "type": "richtext",
-      "required": true
-    },
     "carousel": {
       "type": "media",
       "multiple": true,
@@ -23,6 +19,10 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
     }
   }
 }

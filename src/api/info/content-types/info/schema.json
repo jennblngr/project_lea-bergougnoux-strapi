@@ -4,15 +4,16 @@
   "info": {
     "singularName": "info",
     "pluralName": "infos",
-    "displayName": "Infos"
+    "displayName": "Infos",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "text": {
-      "type": "richtext",
+    "content": {
+      "type": "blocks",
       "required": true
     }
   }
