@@ -777,6 +777,8 @@ export interface ApiInfoInfo extends Schema.SingleType {
   };
   attributes: {
     content: Attribute.Blocks & Attribute.Required;
+    phone: Attribute.String & Attribute.Required;
+    address: Attribute.Component<'infos.address'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &

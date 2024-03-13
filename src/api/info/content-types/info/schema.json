@@ -15,6 +15,18 @@
     "content": {
       "type": "blocks",
       "required": true
+    },
+    "phone": {
+      "type": "string",
+      "regex": "^0[1-9](?:[\\s.-]*\\d{2}){4}$",
+      "required": true
+    },
+    "address": {
+      "displayName": "Address",
+      "type": "component",
+      "repeatable": false,
+      "component": "infos.address",
+      "required": true
     }
   }
 }
