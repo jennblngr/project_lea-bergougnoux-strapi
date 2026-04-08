@@ -27,6 +27,10 @@
       "repeatable": false,
       "component": "infos.address",
       "required": true
+    },
+    "mail": {
+      "type": "string",
+      "required": true
     }
   }
 }

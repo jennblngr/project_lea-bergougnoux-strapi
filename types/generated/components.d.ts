@@ -1,32 +1,18 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Struct, Schema } from '@strapi/strapi';
 
-export interface InfosAddress extends Schema.Component {
-  collectionName: 'components_infos_addresses';
+export interface ProjectMedia extends Struct.ComponentSchema {
+  collectionName: 'components_project_media';
   info: {
-    displayName: 'Address';
-    icon: 'pinMap';
+    displayName: 'media';
+    icon: 'picture';
   };
   attributes: {
-    street: Attribute.String & Attribute.Required;
-    cp: Attribute.String & Attribute.Required;
-    city: Attribute.String & Attribute.Required;
+    source: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    alt: Schema.Attribute.String;
   };
 }
 
-export interface InfosUrl extends Schema.Component {
-  collectionName: 'components_infos_urls';
-  info: {
-    displayName: 'Url';
-    icon: 'link';
-    description: '';
-  };
-  attributes: {
-    src: Attribute.String;
-    name: Attribute.String & Attribute.Required;
-  };
-}
-
-export interface ProjectDescription extends Schema.Component {
+export interface ProjectDescription extends Struct.ComponentSchema {
   collectionName: 'components_project_descriptions';
   info: {
     displayName: 'description';
@@ -34,30 +20,44 @@ export interface ProjectDescription extends Schema.Component {
     description: '';
   };
   attributes: {
-    medias: Attribute.Media;
-    content: Attribute.Blocks;
+    medias: Schema.Attribute.Media<'images', true>;
+    content: Schema.Attribute.Blocks;
   };
 }
 
-export interface ProjectMedia extends Schema.Component {
-  collectionName: 'components_project_media';
+export interface InfosUrl extends Struct.ComponentSchema {
+  collectionName: 'components_infos_urls';
   info: {
-    displayName: 'media';
-    icon: 'picture';
+    displayName: 'Url';
+    icon: 'link';
+    description: '';
   };
   attributes: {
-    source: Attribute.Media & Attribute.Required;
-    alt: Attribute.String;
+    src: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-declare module '@strapi/types' {
-  export module Shared {
-    export interface Components {
-      'infos.address': InfosAddress;
-      'infos.url': InfosUrl;
-      'project.description': ProjectDescription;
+export interface InfosAddress extends Struct.ComponentSchema {
+  collectionName: 'components_infos_addresses';
+  info: {
+    displayName: 'Address';
+    icon: 'pinMap';
+  };
+  attributes: {
+    street: Schema.Attribute.String & Schema.Attribute.Required;
+    cp: Schema.Attribute.String & Schema.Attribute.Required;
+    city: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
       'project.media': ProjectMedia;
+      'project.description': ProjectDescription;
+      'infos.url': InfosUrl;
+      'infos.address': InfosAddress;
     }
   }
 }

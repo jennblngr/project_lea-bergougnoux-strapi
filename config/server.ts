@@ -7,7 +7,7 @@ export default ({ env }) => ({
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
-  url: env('PUBLIC_URL', 'https://lb-back.jennblngr.com'),
+  url: env('PUBLIC_URL', ''),
   proxy: env.bool('IS_PROXIED', true),
   cron: {
     enabled: env.bool('CRON_ENABLED', false),
